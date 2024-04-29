@@ -1,0 +1,14 @@
+html, body{
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media screen and (max-width: 425px){
+    .cdk-overlay-pane.mat-mdc-dialog-panel{
+        max-width: 100% !important;
+    }
+}

@@ -1,0 +1,19 @@
+.avisos{
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+h1{
+    text-align: center;
+    text-shadow: 2px 2px 2px grey;
+}
+
+.cartas{
+    background-color: rgb(159, 208, 159);
+    border: 2px solid black;
+}
+
+.cartas:hover{
+    background-color: rgb(112, 153, 112);
+    
+}

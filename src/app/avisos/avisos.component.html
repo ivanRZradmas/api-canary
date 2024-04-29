@@ -1,0 +1,15 @@
+<div class="avisos">
+    <h1>Listado de avisos</h1>
+    <mat-selection-list role="list" class="lista-flex">
+        <mat-list *ngFor="let aviso of avisos">
+            <mat-card (click)="openDialog(aviso)" class="cartas">
+                <mat-card-header>
+                   <h3>{{'Nombre: ' + aviso.service_name}}</h3> 
+                </mat-card-header>
+                <mat-card-content>
+                    {{'Dirección: ' + aviso.address}}
+                </mat-card-content>
+            </mat-card>
+        </mat-list>
+    </mat-selection-list>
+</div>

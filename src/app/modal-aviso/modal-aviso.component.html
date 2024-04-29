@@ -1,0 +1,34 @@
+<div class="modal">  
+    <mat-dialog-content>
+        <h1>{{aviso.service_name}}</h1>
+        <mat-divider></mat-divider>
+
+        <p>
+            <b>ID del servicio:</b> 
+            <br>
+            {{aviso.service_id}}
+        </p>
+        
+        <p>
+            <b>Dirección:</b> 
+            <br>
+            {{aviso.address}}
+        </p>
+
+        <p>
+            <b>Descripción:</b> 
+            <br>
+            {{aviso.description}}
+        </p>
+
+        <p>
+            <b>Fecha de solicitud:</b> 
+            <br>
+            {{aviso.requested_datetime | date}}
+        </p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+</div>

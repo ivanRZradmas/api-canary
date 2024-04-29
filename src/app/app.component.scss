@@ -1,0 +1,36 @@
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+app-avisos{
+    width: clamp(325px, 30vw, 90%);
+    background-color: rgb(172, 224, 172);
+    height: 100vh;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+app-mapa{
+    width: clamp(325px, 53vw, 100%);
+    flex-grow: 2;
+}
+
+.buttonMovil{
+    display: none;
+    position: fixed;
+    top: 94vh;
+    left: 82vw;
+    padding: 2%;
+    z-index: 1000;
+
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+@media screen and (max-width: 425px){
+    .buttonMovil{
+        display: block;
+    }
+}
