@@ -1,15 +1,8 @@
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+<mat-toolbar class="toolbar">
+    <button mat-mini-fab class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleDrawer()" color="accent">
+      <mat-icon>menu_open</mat-icon>
     </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+    <span>Listado de avisos</span>
   </mat-toolbar>
 
 <mat-drawer-container class="example-container" [class.hide-content]="isMobile && !isContentMode">
@@ -21,5 +14,5 @@
     </mat-drawer-content>
 </mat-drawer-container>
 
-<button mat-raised-button *ngIf="drawerOpened" (click)="toggleDrawer()" class="buttonMovil" [class.hide-button]="screenWidth>=425" color="accent">Mapa</button>
-<button mat-raised-button *ngIf="!drawerOpened" (click)="toggleDrawer()" class="buttonMovil" [class.hide-button]="screenWidth>=425" color="accent">Listado</button>
+<button mat-raised-button *ngIf="drawerOpened" (click)="toggleDrawer()" class="buttonMovil" color="accent">Mapa</button>
+<button mat-raised-button *ngIf="!drawerOpened" (click)="toggleDrawer()" class="buttonMovil" color="accent">Listado</button>

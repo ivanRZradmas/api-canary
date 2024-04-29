@@ -25,6 +25,14 @@ mat-drawer-content{
     flex: 1 1 auto;
 }
 
+.toolbar span{
+    margin-left: 0.5%;
+}
+
+.toolbar{
+    background-color: #3b3b3b;
+}
+
 @media screen and (max-width: 425px){
     .buttonMovil{
         display: block;
