@@ -1,12 +1,25 @@
-<div>
-    <main>
-        <app-avisos *ngIf="visible || screenWidth>=450"></app-avisos>
-        <app-mapa *ngIf="!visible || screenWidth>=450"></app-mapa>
-        <div *ngIf="visible || screenWidth>=450" class="buttonMovil" (click)="showListado()">
-            Mapa
-        </div>
-        <div *ngIf="!visible || screenWidth>=450" class="buttonMovil" (click)="showListado()">
-            Listado
-        </div>
-    </main>
-</div>
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+<mat-drawer-container class="example-container" [class.hide-content]="isMobile && !isContentMode">
+    <mat-drawer mode="side" [opened]="drawerOpened">
+        <app-avisos *ngIf="drawerOpened || screenWidth>=425"></app-avisos>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-mapa *ngIf="!drawerOpened || screenWidth>=425"></app-mapa>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<button mat-raised-button *ngIf="drawerOpened" (click)="toggleDrawer()" class="buttonMovil" [class.hide-button]="screenWidth>=425" color="accent">Mapa</button>
+<button mat-raised-button *ngIf="!drawerOpened" (click)="toggleDrawer()" class="buttonMovil" [class.hide-button]="screenWidth>=425" color="accent">Listado</button>

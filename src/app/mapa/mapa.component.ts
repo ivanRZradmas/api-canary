@@ -57,7 +57,7 @@ export class MapaComponent implements OnInit {
       ],
       target: 'map',
       view: new View({
-        center: fromLonLat([-3.6291320, 40.5361528]),
+        center: fromLonLat([-3.6483320, 40.5361528]),
         zoom: 14, maxZoom: 18
       }),
     });
