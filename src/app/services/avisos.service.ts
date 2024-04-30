@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { global } from "./global";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 
@@ -14,7 +14,7 @@ export class AvisoService{
         this.url = global.url;
     }
 
-    getAvisos(limit: any, page: any): Observable<any>{
+    getAvisos(limit: number, page: number): Observable<any>{
         return this._http.get(this.url + 'requests?limit=' + limit + '&page=' + page);
     }
 }

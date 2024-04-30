@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { AvisoService } from '../services/avisos.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Aviso } from '../models/aviso';
 
 @Component({
   selector: 'modal-aviso',
@@ -19,10 +19,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 
 export class ModalAvisoComponent implements OnInit {
-  public aviso: any;
+  public aviso: Aviso;
 
     constructor(
-      private _snackBar: MatSnackBar,
       public dialog: MatDialog,
       @Inject(MAT_DIALOG_DATA) public data: any
     ){

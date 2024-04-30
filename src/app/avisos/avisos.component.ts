@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MapaService } from '../services/mapa.service';
+import { Aviso } from '../models/aviso';
 
 @Component({
   selector: 'app-avisos',
@@ -20,7 +21,7 @@ import { MapaService } from '../services/mapa.service';
 export class AvisosComponent implements OnInit {
   public limit: number;
   public page: number;
-  public avisos: any;
+  public avisos: Aviso[];
 
   constructor(
     private _avisoService: AvisoService,
@@ -29,6 +30,7 @@ export class AvisosComponent implements OnInit {
   ){
     this.limit = 20;
     this.page = 1;
+    this.avisos = [];
   }
 
   ngOnInit(): void {
@@ -46,11 +48,7 @@ export class AvisosComponent implements OnInit {
     );
   }
 
-  openDialog(aviso: any){
+  openDialog(aviso: Aviso){
     this._mapaService.showAviso(aviso);
-  }
-
-  getAviso(aviso: any){
-    this._mapaService.sendAviso(aviso);
   }
 }

@@ -12,7 +12,8 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { AvisoService } from '../services/avisos.service';
+import { Aviso } from '../models/aviso';
 
 @Component({
   selector: 'app-mapa',
@@ -20,22 +21,21 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule, FormsModule, MatDialogModule],
   templateUrl: './mapa.component.html',
   styleUrl: './mapa.component.scss',
-  providers: [MapaService]
+  providers: [MapaService, AvisoService]
 })
 
 export class MapaComponent implements OnInit {
   public map!: Map;
   public icon!: Feature;
   public vectorSource!: VectorSource;
-  public vectorLayer: any;
   public limit: number;
   public page: number;
-  public layers: any;
-  public long: any;
-  public lat: any;
-  public aviso: any;
+  public long!: number;
+  public lat!: number;
+  public aviso!: Aviso;
 
   constructor(
+    private _avisoService: AvisoService,
     private _mapaService: MapaService,
     public dialog: MatDialog
   ){
@@ -64,7 +64,7 @@ export class MapaComponent implements OnInit {
   }
 
   loadPoints(){
-    this._mapaService.getLayers(this.limit, this.page).subscribe(
+    this._avisoService.getAvisos(this.limit, this.page).subscribe(
       response => {
         for (let i = 0; i < response.length; i++) {
           this.aviso = response[i];
@@ -84,7 +84,7 @@ export class MapaComponent implements OnInit {
     );
   }
 
-  drawPoints(aviso: any){
+  drawPoints(aviso: Aviso){
     const iconFeature = new Feature({
       geometry: new Point(fromLonLat([aviso.long, aviso.lat])),
       name: 'Madrid',
@@ -112,7 +112,7 @@ export class MapaComponent implements OnInit {
     this.map.addLayer(vectorLayer);
   }
 
-  openDialog(aviso: any){
+  openDialog(aviso: Aviso){
     this._mapaService.showAviso(aviso);
   }
 }

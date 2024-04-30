@@ -17,13 +17,13 @@ mat-drawer-content{
     border-radius: 50px;
 }
 
-.hide-button{
-    display: block !important;
+mat-drawer{
+    width: clamp(215px, 35%, 600px);
 }
 
-.example-spacer {
-    flex: 1 1 auto;
-}
+/*.hide-button{ //Clase para que los botones se muestren en la resolución de ordenador
+    display: block !important;
+}*/
 
 .toolbar span{
     margin-left: 0.5%;
@@ -36,5 +36,9 @@ mat-drawer-content{
 @media screen and (max-width: 425px){
     .buttonMovil{
         display: block;
+    }
+
+    mat-drawer{
+        width: 100%;
     }
 }
