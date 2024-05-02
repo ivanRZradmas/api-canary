@@ -9,11 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AvisosComponent, MapaComponent, CommonModule, MatButtonModule, MatCardModule, MatSidenavModule, MatIconButton, MatIconModule, MatToolbarModule],
+  imports: [RouterOutlet, AvisosComponent, MapaComponent, CommonModule, MatButtonModule, MatCardModule, MatSidenavModule, MatIconButton, MatIconModule, MatToolbarModule, MatTooltipModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
