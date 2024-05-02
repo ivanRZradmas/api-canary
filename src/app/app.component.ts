@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { global } from './services/global';
 import { AvisosComponent } from './avisos/avisos.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { CommonModule } from '@angular/common';
