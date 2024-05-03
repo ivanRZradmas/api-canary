@@ -39,7 +39,7 @@ export class MapaComponent implements OnInit {
     private _mapaService: MapaService,
     public dialog: MatDialog
   ){
-    this.limit = 20;
+    this.limit = 50;
     this.page = 1;
   }
 
@@ -64,7 +64,7 @@ export class MapaComponent implements OnInit {
   }
 
   loadPoints(){
-    this._avisoService.getAvisos(this.limit, this.page).subscribe(
+    this._avisoService.getAvisos().subscribe(
       response => {
         for (let i = 0; i < response.length; i++) {
           this.aviso = response[i];

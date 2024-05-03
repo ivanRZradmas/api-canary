@@ -28,7 +28,7 @@ export class AvisosComponent implements OnInit {
     private _mapaService: MapaService,
     public dialog: MatDialog
   ){
-    this.limit = 20;
+    this.limit = 50;
     this.page = 1;
     this.avisos = [];
   }
@@ -38,7 +38,7 @@ export class AvisosComponent implements OnInit {
   }
 
   getAvisos(){
-    this._avisoService.getAvisos(this.limit, this.page).subscribe(
+    this._avisoService.getAvisos().subscribe(
       response => {
         this.avisos = response;
       },
