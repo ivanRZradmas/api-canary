@@ -21,16 +21,13 @@ mat-drawer{
     width: clamp(215px, 35%, 600px);
 }
 
-/*.hide-button{ //Clase para que los botones se muestren en la resolución de ordenador
-    display: block !important;
-}*/
-
 .toolbar span{
-    margin-left: 0.5%;
+    margin-left: 2%;
 }
 
 .toolbar{
     background-color: #3b3b3b;
+    height: 7vh;
 }
 
 @media screen and (max-width: 425px){
