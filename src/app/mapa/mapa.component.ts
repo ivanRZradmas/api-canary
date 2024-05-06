@@ -14,6 +14,8 @@ import Style from 'ol/style/Style';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AvisoService } from '../services/avisos.service';
 import { Aviso } from '../models/aviso';
+import { AvisoDataService } from '../services/avisosData.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mapa',
@@ -25,27 +27,30 @@ import { Aviso } from '../models/aviso';
 })
 
 export class MapaComponent implements OnInit {
-  public map!: Map;
-  public icon!: Feature;
-  public vectorSource!: VectorSource;
-  public limit: number;
-  public page: number;
-  public long!: number;
-  public lat!: number;
-  public aviso!: Aviso;
+  public map: Map;
+  public icon: Feature;
+  public vectorSource: VectorSource;
+  public long: number;
+  public lat: number;
+  public aviso: Aviso;
 
   constructor(
-    private _avisoService: AvisoService,
     private _mapaService: MapaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _avisosDataService: AvisoDataService
   ){
-    this.limit = 50;
-    this.page = 1;
+
   }
 
   ngOnInit() {
     this.initMap();
-    this.loadPoints();
+    
+    this._avisosDataService.observableAvisos.subscribe((avisos: Aviso[]) => {
+      for (let i = 0; i < avisos.length; i++) {
+        this.aviso = avisos[i];
+        this.drawPoints(this.aviso);
+      }
+    });
   }
 
   initMap() {
@@ -61,28 +66,26 @@ export class MapaComponent implements OnInit {
         zoom: 14, maxZoom: 18
       }),
     });
+    this.map.on('click', (event) => {
+      this.map.forEachFeatureAtPixel(event.pixel, (feature) => {
+        let data = feature.getProperties();
+        this.openDialog(data['aviso']);
+      });
+    });
   }
 
-  loadPoints(){
-    this._avisoService.getAvisos().subscribe(
-      response => {
-        for (let i = 0; i < response.length; i++) {
-          this.aviso = response[i];
+  /*loadPoints(){
+    this.avisos$.subscribe((avisos: Aviso[]) => {
+        for (let i = 0; i < avisos.length; i++) {
+          this.aviso = avisos[i];
           this.drawPoints(this.aviso);
         }
-
-        this.map.on('click', (event) => {
-          this.map.forEachFeatureAtPixel(event.pixel, (feature) => {
-            let data = feature.getProperties();
-            this.openDialog(data['aviso']);
-          });
-        });
       },
       error => {
         console.log(error);
       }
     );
-  }
+  }*/
 
   drawPoints(aviso: Aviso){
     const iconFeature = new Feature({

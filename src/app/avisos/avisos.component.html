@@ -1,5 +1,5 @@
 <div class="avisos">
-    <mat-selection-list role="list" class="lista-flex">
+    <mat-selection-list *ngIf="avisos$ | async as avisos" role="list" class="lista-flex">
         <mat-list *ngFor="let aviso of avisos">
             <mat-card (click)="openDialog(aviso)" class="cartas" >
                 <mat-card-header>

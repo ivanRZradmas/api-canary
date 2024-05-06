@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MapaService } from '../services/mapa.service';
 import { Aviso } from '../models/aviso';
+import { Observable } from 'rxjs';
+import { AvisoDataService } from '../services/avisosData.service';
 
 @Component({
   selector: 'app-avisos',
@@ -19,33 +21,18 @@ import { Aviso } from '../models/aviso';
 })
 
 export class AvisosComponent implements OnInit {
-  public limit: number;
-  public page: number;
-  public avisos: Aviso[];
+  public avisos$: Observable<Aviso[]>;
 
   constructor(
-    private _avisoService: AvisoService,
     private _mapaService: MapaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _avisosDataService: AvisoDataService
   ){
-    this.limit = 50;
-    this.page = 1;
-    this.avisos = [];
+    
   }
 
   ngOnInit(): void {
-    this.getAvisos();
-  }
-
-  getAvisos(){
-    this._avisoService.getAvisos().subscribe(
-      response => {
-        this.avisos = response;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.avisos$ = this._avisosDataService.observableAvisos;
   }
 
   openDialog(aviso: Aviso){

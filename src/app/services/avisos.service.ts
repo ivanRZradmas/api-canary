@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Observable, map } from "rxjs";
+import { Injectable, OnInit } from "@angular/core";
+import { BehaviorSubject, Observable, map } from "rxjs";
 import { global } from "./global";
 import { HttpClient } from "@angular/common/http";
 import { Aviso, AvisoApi } from "../models/aviso";
@@ -7,7 +7,7 @@ import { SerializationService } from "./serialization.service";
 
 @Injectable()
 
-export class AvisoService{
+export class AvisoService implements OnInit{
     public url: string;
     public limit: number;
     public page: number;
@@ -21,7 +21,11 @@ export class AvisoService{
         this.page = 1;
     }
 
-    getAvisos(): Observable<Aviso[]>{
+    ngOnInit(): void {
+        
+    }
+
+    getAvisos(): Observable<Aviso[]> {
         return this._http.get<AvisoApi[]>(this.url + 'requests?limit=' + this.limit + '&page=' + this.page).pipe(map(this._serializationService.deserializeList));
     }
 }
