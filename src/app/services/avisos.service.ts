@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { BehaviorSubject, Observable, map } from "rxjs";
+import { Observable, map } from "rxjs";
 import { global } from "./global";
 import { HttpClient } from "@angular/common/http";
 import { Aviso, AvisoApi } from "../models/aviso";

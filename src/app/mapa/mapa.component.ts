@@ -74,19 +74,6 @@ export class MapaComponent implements OnInit {
     });
   }
 
-  /*loadPoints(){
-    this.avisos$.subscribe((avisos: Aviso[]) => {
-        for (let i = 0; i < avisos.length; i++) {
-          this.aviso = avisos[i];
-          this.drawPoints(this.aviso);
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }*/
-
   drawPoints(aviso: Aviso){
     const iconFeature = new Feature({
       geometry: new Point(fromLonLat([aviso.long, aviso.lat])),

@@ -11,8 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SerializationService } from './services/serialization.service';
 import { AvisoService } from './services/avisos.service';
-import { Observable, map } from 'rxjs';
-import { Aviso, AvisoApi } from './models/aviso';
 import { HttpClient } from '@angular/common/http';
 import { global } from './services/global';
 import { AvisoDataService } from './services/avisosData.service';
